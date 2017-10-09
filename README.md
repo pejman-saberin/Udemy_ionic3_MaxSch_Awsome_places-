@@ -24,3 +24,4 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+# Udemy_ionic3_MaxSch_Awsome_places-
