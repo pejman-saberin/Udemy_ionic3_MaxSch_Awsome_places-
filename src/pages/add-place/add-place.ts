@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {ModalController} from 'ionic-angular';
+import {ModalController,ToastController,LoadingController} from 'ionic-angular';
 import {Geolocation} from "ionic-native"; // this is for ionic 2 as mentioned in lecture 182
 //import { Geolocation } from '@ionic-native/geolocation'; //this is for ionic 3. the lecture is based on ionic 2 so this is commented out
 
@@ -20,7 +20,9 @@ export class AddPlacePage {
 
   locationIsSet=false;
 
-  constructor(private modalCtrl: ModalController){}
+  constructor(private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController,
+              private  toastCtrl: ToastController){}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPlacePage');
@@ -42,17 +44,27 @@ export class AddPlacePage {
   }
 
   onLocate(){
+    const loader=this.loadingCtrl.create({
+      content: 'Getting your Location...'
+    })
+    loader.present();
     Geolocation.getCurrentPosition()  //this returns a promise. hence you can you then.
       .then(
         location=>{
+          loader.dismiss();
         this.location.lat=location.coords.latitude;
         this.location.lng=location.coords.longitude;
-        this.locationIsSet=true;         
+        this.locationIsSet=true;
         }
       )
       .catch(
         error=>{
-          console.log();
+          loader.dismiss();
+          const toast=this.toastCtrl.create({
+            message: 'Could get location,please pick it manually!',
+            duration:2500
+          })
+          toast.present();       
         }
       );
 
