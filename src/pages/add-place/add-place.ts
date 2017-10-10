@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {ModalController,ToastController,LoadingController} from 'ionic-angular';
-import {Geolocation} from "ionic-native"; // this is for ionic 2 as mentioned in lecture 182
+import {Geolocation, Camera} from "ionic-native"; // this is for ionic 2 as mentioned in lecture 182
 //import { Geolocation } from '@ionic-native/geolocation'; //this is for ionic 3. the lecture is based on ionic 2 so this is commented out
 
 import {SetLocationPage} from "../set-location/set-location";
@@ -64,9 +64,27 @@ export class AddPlacePage {
             message: 'Could get location,please pick it manually!',
             duration:2500
           })
-          toast.present();       
+          toast.present();
         }
       );
+
+  }
+  onTakePhoto(){
+    console.log('executed');
+    Camera.getPicture({
+      encodingType:Camera.EncodingType.JPEG,
+      correctOrientation:true
+    })
+    .then(
+      imageData =>{
+        console.log(imageData);
+      }
+    )
+    .catch(
+      err=>{
+        console.log(err);
+      }
+    );
 
   }
 
