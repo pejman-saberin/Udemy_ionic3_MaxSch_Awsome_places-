@@ -17,6 +17,8 @@ export class AddPlacePage {
     lat:40.7624234,
     lng: -73.9759827
   };
+  
+  imageUrl='';
 
   locationIsSet=false;
 
@@ -77,7 +79,8 @@ export class AddPlacePage {
     })
     .then(
       imageData =>{
-        console.log(imageData);
+        //console.log(imageData);
+        this.imageUrl=imageData;
       }
     )
     .catch(
