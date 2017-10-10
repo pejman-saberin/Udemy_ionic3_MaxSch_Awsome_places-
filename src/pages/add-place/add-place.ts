@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import {ModalController} from 'ionic-angular';
 
 import {SetLocationPage} from "../set-location/set-location";
-import {Location} from "../../modals/location";
+import {Location} from "../../models/location";
 
 
 @Component({
