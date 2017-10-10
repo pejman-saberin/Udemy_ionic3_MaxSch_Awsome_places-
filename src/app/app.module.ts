@@ -8,14 +8,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {SetLocationPage} from '../pages/set-location/set-location';
 import {PlacePage} from '../pages/place/place';
-import {PlacePage} from '../pages/add-place/add-place';
+import {AddPlacePage} from '../pages/add-place/add-place';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SetLocationPage,
-    AddplacePage,
+    AddPlacePage,
     PlacePage
     
     
@@ -29,7 +29,7 @@ import {PlacePage} from '../pages/add-place/add-place';
     MyApp,
     HomePage,
     SetLocationPage,
-    AddplacePage,
+    AddPlacePage,
     PlacePage
   ],
   providers: [
