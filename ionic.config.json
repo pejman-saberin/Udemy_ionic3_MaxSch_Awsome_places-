@@ -1,5 +1,6 @@
 {
   "name": "Udemy_ionic3_MaxSch_Awsome_places",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {}
 }
