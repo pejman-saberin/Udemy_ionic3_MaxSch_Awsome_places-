@@ -6,6 +6,7 @@ import {Geolocation, Camera} from "ionic-native"; // this is for ionic 2 as ment
 
 import {SetLocationPage} from "../set-location/set-location";
 import {Location} from "../../models/location";
+import {PlacesService}  from  "../../services/places";
 
 
 @Component({
@@ -17,20 +18,29 @@ export class AddPlacePage {
     lat:40.7624234,
     lng: -73.9759827
   };
-  
+
   imageUrl='';
 
   locationIsSet=false;
 
   constructor(private modalCtrl: ModalController,
               private loadingCtrl: LoadingController,
-              private  toastCtrl: ToastController){}
+              private  toastCtrl: ToastController,
+              private placesService:PlacesService){}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPlacePage');
   }
   onSubmit (form:NgForm){
-    console.log(form.value);
+    //console.log(form.value);
+    this.placesService.addPlace(form.value.title, form.value.description,this.location,this.imageUrl);
+    form.reset();
+    this.location={//this is preview location
+      lat:40.7624234,
+      lng: -73.9759827
+    };
+    this.imageUrl='';
+    this.locationIsSet=false;
   }
 
   onOpenMap(){

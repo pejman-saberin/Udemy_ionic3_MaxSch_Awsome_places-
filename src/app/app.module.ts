@@ -9,7 +9,8 @@ import { HomePage } from '../pages/home/home';
 import {SetLocationPage} from '../pages/set-location/set-location';
 import {PlacePage} from '../pages/place/place';
 import {AddPlacePage} from '../pages/add-place/add-place';
-import {AgmCoreModule} from "angular2-google-maps/core"
+import {AgmCoreModule} from "angular2-google-maps/core";
+import {PlacesService} from "../services/places";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import {AgmCoreModule} from "angular2-google-maps/core"
     SetLocationPage,
     AddPlacePage,
     PlacePage
-    
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import {AgmCoreModule} from "angular2-google-maps/core"
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PlacesService
   ]
 })
 export class AppModule {}
